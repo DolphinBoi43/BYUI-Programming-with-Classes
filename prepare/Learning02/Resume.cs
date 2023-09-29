@@ -1,8 +1,9 @@
 using System;
 public class Resume
 {
-    string _name;
-    List<Job> _jobs;
+    public string _name;
+    public List<Job> _jobs = new List<Job>();
+    
     public void Display()
     {
         Console.WriteLine($"Name: {_name}\nJobs:");
