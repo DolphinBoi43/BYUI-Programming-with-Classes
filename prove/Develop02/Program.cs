@@ -1,16 +1,19 @@
 using System;
+using System.IO;
 
 class JournalEntry
 {
     public string Text;
     public DateTime Date;
     public string Prompt;
+    public string Location;
 
-    public JournalEntry(string text, string prompt)
+    public JournalEntry(string text, string prompt, string location)
     {
         Text = text;
         Date = DateTime.Now;
         Prompt = prompt;
+        Location = location;
     }
 
     public string GetFormattedDate()
@@ -20,7 +23,7 @@ class JournalEntry
 
     public override string ToString()
     {
-        return $"Date: {GetFormattedDate()}\nPrompt: {Prompt}\nEntry: {Text}\n";
+        return $"Date: {GetFormattedDate()}\nPrompt: {Prompt}\nLocation: {Location}\nEntry: {Text}\n";
     }
 }
 
@@ -30,23 +33,34 @@ class Journal
     private JournalEntry[] entries = new JournalEntry[MaxEntries];
     private int entryCount = 0;
 
-    public void AddEntry(string text)
+    private Random random = new Random();
+
+    public string GetRandomPrompt()
+    {
+        string[] prompts = {
+            "Who was the most interesting person I interacted with today?",
+            "What was the best part of my day?",
+            "How did I see the hand of the Lord in my life today?",
+            "What was the strongest emotion I felt today?",
+            "If I had one thing I could do over today, what would it be?",
+            "What are you most grateful for today?",
+            "What was the most interesting conversation you had today",
+        };
+        int promptIndex = random.Next(prompts.Length);
+        return prompts[promptIndex];
+    }
+
+    public void AddEntry()
     {
         if (entryCount < MaxEntries)
         {
-            string[] prompts = {
-                "Who was the most interesting person I interacted with today?",
-                "What was the best part of my day?",
-                "How did I see the hand of the Lord in my life today?",
-                "What was the strongest emotion I felt today?",
-                "If I had one thing I could do over today, what would it be?",
-                "What are you most grateful for today?",
-                "What was the most intersting conversation you had today",  
-            };
-            Random random = new Random();
-            int promptIndex = random.Next(prompts.Length);
-            string prompt = prompts[promptIndex];
-            entries[entryCount++] = new JournalEntry(text, prompt);
+            string prompt = GetRandomPrompt();
+            Console.WriteLine($"{prompt}\nEnter Entry:");
+            string text = Console.ReadLine();
+            Console.WriteLine("Enter the location:");
+            string location = Console.ReadLine();
+
+            entries[entryCount++] = new JournalEntry(text, prompt, location);
         }
         else
         {
@@ -65,12 +79,74 @@ class Journal
 
     public void SaveJournalToFile(string filename)
     {
-        Console.WriteLine("Saving the journal to a file is not implemented in this version.");
+        try
+        {
+            using (StreamWriter writer = new StreamWriter(filename))
+            {
+                for (int i = 0; i < entryCount; i++)
+                {
+                    writer.WriteLine($"Date: {entries[i].GetFormattedDate()}");
+                    writer.WriteLine($"Prompt: {entries[i].Prompt}");
+                    writer.WriteLine($"Location: {entries[i].Location}");
+                    writer.WriteLine($"Entry: {entries[i].Text}\n");
+                }
+            }
+            Console.WriteLine($"Journal saved to {filename}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error saving journal: {ex.Message}");
+        }
     }
 
     public void LoadJournalFromFile(string filename)
     {
-        Console.WriteLine("Loading the journal from a file is not implemented in this version.");
+        try
+        {
+            if (File.Exists(filename)) // Check if the file exists
+            {
+                using (StreamReader reader = new StreamReader(filename))
+                {
+                    while (!reader.EndOfStream)
+                    {
+                        string dateLine = reader.ReadLine();
+                        string promptLine = reader.ReadLine();
+                        string locationLine = reader.ReadLine();
+                        string entryLine = reader.ReadLine();
+
+                        if (dateLine != null && dateLine.StartsWith("Date: ") &&
+                            promptLine != null && promptLine.StartsWith("Prompt: ") &&
+                            locationLine != null && locationLine.StartsWith("Location: ") &&
+                            entryLine != null && entryLine.StartsWith("Entry: "))
+                        {
+                            string date = dateLine.Substring(6); // Remove "Date: "
+                            string prompt = promptLine.Substring(8); // Remove "Prompt: "
+                            string location = locationLine.Substring(10); // Remove "Location: "
+                            string entry = entryLine.Substring(7); // Remove "Entry: "
+
+                            DateTime parsedDate = DateTime.Parse(date);
+                            entries[entryCount++] = new JournalEntry(entry, prompt, location)
+                            {
+                                Date = parsedDate
+                            };
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid format in the journal file. Skipping entry.");
+                        }
+                    }
+                }
+                Console.WriteLine($"Journal loaded from {filename}");
+            }
+            else
+            {
+                Console.WriteLine("File not found.");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading journal: {ex.Message}");
+        }
     }
 }
 
@@ -95,9 +171,7 @@ class Program
             switch (task)
             {
                 case 1:
-                    Console.WriteLine("Enter your journal entry:");
-                    string entry = Console.ReadLine();
-                    journal.AddEntry(entry);
+                    journal.AddEntry();
                     break;
                 case 2:
                     journal.DisplayEntries();
@@ -106,13 +180,11 @@ class Program
                     Console.WriteLine("Enter the filename to save the journal:");
                     string saveFilename = Console.ReadLine();
                     journal.SaveJournalToFile(saveFilename);
-                    Console.WriteLine($"Journal saved to {saveFilename}");
                     break;
                 case 4:
                     Console.WriteLine("Enter the filename to load the journal:");
                     string loadFilename = Console.ReadLine();
                     journal.LoadJournalFromFile(loadFilename);
-                    Console.WriteLine($"Journal loaded from {loadFilename}");
                     break;
                 case 5:
                     run = 0;
