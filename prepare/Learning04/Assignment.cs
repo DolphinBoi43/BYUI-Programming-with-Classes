@@ -2,7 +2,7 @@ using System;
 
 public class Assignment
 {
-    private string _studentName;
+    public string _studentName;
     private string _topic;
     public Assignment (string name, string topic)
     {
