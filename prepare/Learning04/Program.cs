@@ -3,8 +3,10 @@ class Program
 {
     static void Main(string[] args)
     {
-        Assignment assignment = new Assignment ("Sammuel Bennett", "Multiplcation");
+        MathAssignment assignment = new MathAssignment ("Sammuel Bennett", "Trigometry", "Section 7.9", "Problems 4-20");
         string info = assignment.GetSummary();
+        string math = assignment.GetHomeworkList();
         Console.WriteLine(info);
+        Console.WriteLine(math);
     }
 }
