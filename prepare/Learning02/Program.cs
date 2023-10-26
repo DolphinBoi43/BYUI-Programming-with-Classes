@@ -10,7 +10,7 @@ class Program
         job1._company = "Monster Inc";
         job1._startYear = 2016;
         job1._endYear = 2020;
-        // testing
+        
         // Creates the second job
         Job job2 = new Job();
         job2._jobTitle = "Mech Pilot";
