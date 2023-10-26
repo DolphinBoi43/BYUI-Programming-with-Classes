@@ -4,10 +4,10 @@ public class Assignment
 {
     private string _studentName;
     private string _topic;
-    public Assignment (string name)
+    public Assignment (string name, string topic)
     {
-        _studentName = "Sammuel Bennet";
-        _topic = "Multiplication";
+        _studentName = name;
+        _topic = topic;
     }
     public string GetSummary()
     {
