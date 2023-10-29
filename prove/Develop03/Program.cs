@@ -2,12 +2,15 @@ using System;
 using System.IO;
 class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
-        string[] lines = File.ReadAllLines("scriptures.txt");
+        string ScriptureFile = "scripture_library.txt";
+        string[] lines = File.ReadAllLines(ScriptureFile);
+        string[] ScriptureLines = lines.Split('\n');
         foreach (string line in lines)
         {
-            Console.WriteLine(lines);
+            Console.WriteLine(line);
         }
+
     }
 }
