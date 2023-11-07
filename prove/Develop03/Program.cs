@@ -4,13 +4,7 @@ class Program
 {
     static void Main()
     {
-        string ScriptureFile = "scripture_library.txt";
-        string[] lines = File.ReadAllLines(ScriptureFile);
-        string[] ScriptureLines = lines.Split('\n');
-        foreach (string line in lines)
-        {
-            Console.WriteLine(line);
-        }
+        List<string> Scriptures = "2 Nephi_29_(8-10).txt", "Ether_12_(4).txt"];
 
     }
 }
