@@ -9,7 +9,7 @@ class Program
             Files[0] = "2 Nephi_29_8-10.txt";
             Files[1] = "Ether_12_4.txt";
         string memorizeScript = Files[rnd.Next(0,1)];
-        
+
 
 
     }

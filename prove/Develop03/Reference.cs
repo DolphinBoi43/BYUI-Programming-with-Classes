@@ -4,6 +4,8 @@ class Reference
 
     public Reference(string text)
     {
-        Text = text;
+        string file = text;
+        string[] reference = file.Split('_');
+        return reference[];
     }
 }
