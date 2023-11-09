@@ -1,8 +1,6 @@
 class Reference
 {
-    private string book;
-    private string chapter;
-    private string verses;
+    private string book, chapter, verses;
     public Reference(string filename)
     {
         string[] reference = filename.Split('_','.');

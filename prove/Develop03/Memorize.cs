@@ -1,7 +1,7 @@
-public class Verses
+public class Memorize
 {
     private string _verses;
-    public Verses(string verses)
+    public Memorize(string verses)
     {
         _verses = verses;
     }

@@ -23,7 +23,7 @@ class Program
         Console.WriteLine("1..");
         Wait();
     }
-    static void Main()
+    static void Main(string[] args)
     {
         Console.Clear();
         Intro();
@@ -36,7 +36,11 @@ class Program
                 Files[1] = "Ether_12_4.txt";
             string memorizeScript = Files[rnd.Next(0,1)];
             Reference scripture = new Reference(memorizeScript);
+            Scripture scripture1 = new Scripture(memorizeScript);
             Console.WriteLine($"{scripture.GetBook()} {scripture.GetChapter()}:{scripture.GetVerses()}");
+            // Testing
+            int verse_count = scripture1.GetVerseCount();
+            Console.WriteLine($"{scripture1.GetScriptures(verse_count)} {verse_count}");
             Thread.Sleep(2000);
             Console.WriteLine("Press the [Enter] key to continue or type quit");
             run = Console.ReadLine();
