@@ -40,4 +40,14 @@ class Reference
     {        
         return verse_count;
     }
+
+    public int GetVerseStart()
+    {
+        return verse_start;
+    }
+
+    public int GetVerseEnd()
+    {
+        return verse_end;
+    }
 }

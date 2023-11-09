@@ -37,19 +37,35 @@ class Program
         string memorizeScript = Files[rnd.Next(0,Files.Length)];
         Reference rf = new Reference(memorizeScript); //Gets the reference
         Scripture sc = new Scripture(memorizeScript); // Gets the actually verses
-        
+        int verse_count = rf.GetVerseCount();
+        int verse_start = 0;
+        int verse_end = 0;
+        if (verse_count == 1)
+        {
+            verse_start = rf.GetVerseStart();
+            verse_end = verse_start;
+        }else{
+            verse_start = rf.GetVerseStart();
+            verse_end = rf.GetVerseEnd();
+        }
         // Start of actually memorization
         string run = "";
         while (run != "quit")
         {
             
             // Display the scripture and start the memorization process
-            Console.WriteLine($"{rf.GetBook()} {rf.GetChapter()}:{rf.GetVerses()}");
+            Console.WriteLine($"{rf.GetBook()} {rf.GetChapter()}:{rf.GetVerses()}\n");
+            for (int i = 0; i < verse_count; i++)
+            {
+                Console.WriteLine($"{verse_start + i}. {sc.GetVerse(i)}");
+            }
             Thread.Sleep(2000);
-            Console.WriteLine("Press the [Enter] key to continue or type quit");
+            Console.WriteLine("\nPress the [Enter] key to continue or type quit");
             run = Console.ReadLine();
+            Console.Clear();
             if (run != "quit")
             {
+                Console.WriteLine("Get Ready!");
                 LongWait();
             }else{
                 Wait();
