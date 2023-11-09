@@ -1,32 +1,28 @@
+using System.Text.RegularExpressions;
+
 class Scripture
 {
-    private string verse_count_s;
-    private int verse_count, verse_start, verse_end;
     private string[] verses;
+    private string verse;
     public Scripture(string filename)
     {
-        string[] reference = filename.Split('_','.');
-        verse_count_s = reference[2];
         verses = File.ReadAllLines(filename);
     }            
 
-    public string GetScriptures(int verse_num)
+    public string GetVerse(int verse_num)
     {
         return verses[verse_num];
     }
 
-    public int GetVerseCount()
+    public string WordErase(string whole_verse)
     {
-        int[] verse_count_ar = verse_count_s.Split('-').Select(int.Parse).ToArray();
-        if (verse_count_ar.Length > 1)
-        {
-            verse_count = verse_count_ar[1] - verse_count_ar[0] + 1;
-        }else{
-            verse_count = 1;
-        }
-        
-        return verse_count;
+        Random rnd = new Random();
+        string[] verse_words = whole_verse.Split(' ');
+        int word_num = rnd.Next(0,verse_words.Length);
+        string word = verse_words[word_num];
+        string replace = Regex.Replace(word, @"(a-Z)","_$1");
+        verse_words[word_num] = replace;
+        verse = string.Join(" ", verse_words);
+        return verse;
     }
-
-
 }

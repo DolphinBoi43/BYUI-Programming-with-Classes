@@ -2,6 +2,7 @@ using System;
 using System.IO;
 class Program
 {
+    
     static void LongWait()
     {
         Thread.Sleep(5000);
@@ -25,22 +26,25 @@ class Program
     }
     static void Main(string[] args)
     {
+        Random rnd = new Random();
         Console.Clear();
         Intro();
+        
+        // Find a scripture to memorize
+        string[] Files= new string[2];
+            Files[0] = "2 Nephi_29_8-10.txt";
+            Files[1] = "Ether_12_4.txt";
+        string memorizeScript = Files[rnd.Next(0,Files.Length)];
+        Reference rf = new Reference(memorizeScript); //Gets the reference
+        Scripture sc = new Scripture(memorizeScript); // Gets the actually verses
+        
+        // Start of actually memorization
         string run = "";
         while (run != "quit")
         {
-            Random rnd = new Random();
-            string[] Files= new string[2];
-                Files[0] = "2 Nephi_29_8-10.txt";
-                Files[1] = "Ether_12_4.txt";
-            string memorizeScript = Files[rnd.Next(0,1)];
-            Reference scripture = new Reference(memorizeScript);
-            Scripture scripture1 = new Scripture(memorizeScript);
-            Console.WriteLine($"{scripture.GetBook()} {scripture.GetChapter()}:{scripture.GetVerses()}");
-            // Testing
-            int verse_count = scripture1.GetVerseCount();
-            Console.WriteLine($"{scripture1.GetScriptures(verse_count)} {verse_count}");
+            
+            // Display the scripture and start the memorization process
+            Console.WriteLine($"{rf.GetBook()} {rf.GetChapter()}:{rf.GetVerses()}");
             Thread.Sleep(2000);
             Console.WriteLine("Press the [Enter] key to continue or type quit");
             run = Console.ReadLine();
