@@ -10,10 +10,10 @@ public class Aninmation
     public void CatBlink()
     {
         int time = 1000;
-        Aninmation.ClearCurrentConsoleLine();
+        ClearCurrentConsoleLine();
         Console.WriteLine("(^w^)");
         Thread.Sleep(time);
-        Aninmation.ClearCurrentConsoleLine();
+        ClearCurrentConsoleLine();
         Console.WriteLine("(-w-)");
         Thread.Sleep(time);    
     }
