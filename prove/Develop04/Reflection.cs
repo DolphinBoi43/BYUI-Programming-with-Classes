@@ -14,10 +14,10 @@ public class Reflection : Activity
     private string[] topics = { "When did you give a compliment to someone last?",
                                 "When was the last time you appreciated something in nature?",
                                 "When did you last sincerely smiled or laugh? What made you?",
-                                "Are you using your time wisely? How can you improve",
-                                "",
-                                "",
-                                ""};
+                                "Are you using your time wisely? How can you improve?",
+                                "What do you think you take for granted?",
+                                "What makes you feel upset or unconfortable?",
+                                "What do you think it takes to make you happy?"};
     public void Reflect()
     {
         string topic = topics[rnd.Next(0,topics.Length)];

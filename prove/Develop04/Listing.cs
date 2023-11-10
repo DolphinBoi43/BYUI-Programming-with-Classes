@@ -18,6 +18,7 @@ public class Listing : Activity
                                 "What are some things you would say to your youngerself?"};
     public void List()
     {
+        string topic = topics[rnd.Next(0,topics.Length)];
         int wait = 2000;
         // Start of the actual reflecting ativity
         Console.Clear();

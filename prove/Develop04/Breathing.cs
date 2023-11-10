@@ -7,7 +7,7 @@ public class Breathing : Activity
     }
     public string BreathInstuct() // in minutes
     {
-        return "For the next " + _time + "minutes lets just focus on " + _activity +" ing";
+        return "For the next " + _time + "minutes lets just focus on " + _activity +"ing";
     }
     public void Breath()
     {
