@@ -9,7 +9,11 @@ public class Activity
 
     public string GetReady()
     {
-        return "Alright, get ready to start the " + _activity;
+        return "Alright, get ready to start the " + _activity + " activity";
+    }
+    public string Credits()
+    {
+        return "You have completed the " + _activity + " activity.";
     }
     public int origRow;
     public int origCol;   

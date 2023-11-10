@@ -4,13 +4,9 @@ class Program
     
     static void Main()
     {
-        Activity act = new Activity();
-        Breathing brt = new Breathing();
-        Reflections rft = new Reflections();
-        Listing lst = new Listing();
         bool run = true;
-        string choice;
-        string activity;
+        string choice, activity;
+        int time;
         Console.Clear();
         Console.WriteLine("Welcome to the Mindfulness Companion App");
         while (run != false)
@@ -19,14 +15,25 @@ class Program
             Console.WriteLine("1) Breathe\n2) List\n3) Reflect\n4) Quit");
             Console.Write("I choose: ");
             choice = Console.ReadLine();
+            Console.Write("For how long? (in minutes)");
+            time = int.Parse(Console.ReadLine());
             switch (choice)
             {
-                case "1": activity = "Breathing"; break;
-                case "2": activity = "Listing"; break;
-                case "3": activity = "Reflection"; break;
+                case "1": 
+                activity = "breathing";
+                Breathing brt = new Breathing(activity, time); break;
+                case "2": 
+                activity = "listing";
+                Listing lst = new Listing(activity, time); break;
+                case "3": 
+                activity = "breathing";
+                Reflection rft = new Reflection(activity, time); break;
                 case "4": run = false; break;
             }
-            act.GetReady(activity);
+            if (activity = "breathing")
+            {
+
+            }
         }
         Console.Clear();
         Console.Write("Good job. Continue to be mindful");

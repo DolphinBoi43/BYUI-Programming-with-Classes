@@ -5,32 +5,31 @@ public class Breathing : Activity
     {
         _time = time;
     }
-    public string BreathInstuct(int time) // in minutes
+    public string BreathInstuct() // in minutes
     {
-        return "for the next " + time + "minutes lets just focus on breathing";
-    }
-    public string BreathCredits(int time)
-    {
-        return "You have completed your breathing excersize for " + time + "minutes";
+        return "for the next " + _time + "minutes lets just focus on breathing";
     }
     public void BreathAnimation()
     {
         int wait = 1500;
         // Start of the actual breathing ativity
-        Console.Clear();
-        Console.WriteLine("Breath in...");
-        for (int i = 0; i < 3; i++)
-        {   
-            WriteAt("(^O^)", i*6, 1);
-            Thread.Sleep(wait);
-        }
-        Console.Clear();
-        Console.WriteLine("Breath out...");
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < _time * 40; i++)
         {
-            WriteAt("(-o-)", i*6, 1);
-            Thread.Sleep(wait);
+            Console.Clear();
+            Console.WriteLine("Breath in...");
+            for (int i = 0; i < 3; i++)
+            {   
+                WriteAt("(^O^)", i*6, 1);
+                Thread.Sleep(wait);
+            }
+            Console.Clear();
+            Console.WriteLine("Breath out...");
+            for (int i = 0; i < 3; i++)
+            {
+                WriteAt("(-o-)", i*6, 1);
+                Thread.Sleep(wait);
+            }
+            Console.Clear();
         }
-        Console.Clear();
     }
 }
