@@ -4,8 +4,8 @@ public class Activity
     {
         return "Alright, get ready to start " + activity_choice;
     }
-    private int origRow;
-    private int origCol;   
+    public int origRow;
+    public int origCol;   
     public void WriteAt(string s, int x, int y)
     { 
     try
@@ -19,4 +19,9 @@ public class Activity
         Console.WriteLine(e.Message);
         }
     }
+        // Create a blank on a line
+        // char blank = ' ';
+        // int fill = 30;
+        // string blank_space = new string (blank, fill);
+        // WriteAt(blank_space, 0, 1);
 }
