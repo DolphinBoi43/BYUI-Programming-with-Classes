@@ -1,4 +1,4 @@
-public class ConsoleSpiner
+public class Animation
 {
     int counter;
     public ConsoleSpiner()
