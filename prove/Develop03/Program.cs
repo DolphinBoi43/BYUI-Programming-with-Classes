@@ -38,18 +38,24 @@ class Program
         Reference rf = new Reference(memorizeScript); //Gets the reference
         Scripture sc = new Scripture(memorizeScript); // Gets the actually verses
         int verse_count = rf.GetVerseCount();
-        int verse_start = 0;
-        int verse_end = 0;
+        int verse_start = rf.GetVerseStart();
+        int verse_end;
+        // Might not actually need this
         if (verse_count == 1)
         {
-            verse_start = rf.GetVerseStart();
             verse_end = verse_start;
         }else{
-            verse_start = rf.GetVerseStart();
             verse_end = rf.GetVerseEnd();
         }
+
         // Start of actually memorization
         string run = "";
+        int runs = 0;
+        List<string> scripture = new List<string>();
+        for (int i = 0; i < verse_count; i++)
+        {
+            scripture.Add(sc.GetVerse(i));
+        }
         while (run != "quit")
         {
             
@@ -57,7 +63,14 @@ class Program
             Console.WriteLine($"{rf.GetBook()} {rf.GetChapter()}:{rf.GetVerses()}\n");
             for (int i = 0; i < verse_count; i++)
             {
-                Console.WriteLine($"{verse_start + i}. {sc.GetVerse(i)}");
+                if (runs == 0)
+                {
+                    Console.WriteLine($"{verse_start + i}. {scripture[i]}");
+                }else{
+                    
+                    Console.WriteLine($"{verse_start + i}. {sc.WordErase(scripture[i])}");
+                }
+                runs += 1;
             }
             Thread.Sleep(2000);
             Console.WriteLine("\nPress the [Enter] key to continue or type quit");

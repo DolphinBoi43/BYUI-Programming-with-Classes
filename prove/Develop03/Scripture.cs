@@ -2,16 +2,16 @@ using System.Text.RegularExpressions;
 
 class Scripture
 {
-    private string[] verses;
-    private string verse;
+    private string[] _verses;
+    private string _verse;
     public Scripture(string filename)
     {
-        verses = File.ReadAllLines(filename);
+        _verses = File.ReadAllLines(filename);
     }            
 
     public string GetVerse(int verse_num)
     {
-        return verses[verse_num];
+        return _verses[verse_num];
     }
 
     public string WordErase(string whole_verse)
@@ -22,7 +22,7 @@ class Scripture
         string word = verse_words[word_num];
         string replace = Regex.Replace(word, @"(a-Z)","_$1");
         verse_words[word_num] = replace;
-        verse = string.Join(" ", verse_words);
-        return verse;
+        _verse = string.Join(" ", verse_words);
+        return _verse;
     }
 }
