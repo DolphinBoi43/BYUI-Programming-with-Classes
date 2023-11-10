@@ -14,7 +14,7 @@ class Program
         {
             string color = s.GetColor();
             double area = s.GetArea();
-            Console.WriteLine($"The {color} shape is {area:.1f} big");
+            Console.WriteLine($"The {color} shape is {area} big");
         }
     }
 }
