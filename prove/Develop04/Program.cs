@@ -10,6 +10,7 @@ class Program
         Listing lst = new Listing();
         bool run = true;
         string choice;
+        string activity;
         Console.Clear();
         Console.WriteLine("Welcome to the Mindfulness Companion App");
         while (run != false)
@@ -20,11 +21,12 @@ class Program
             choice = Console.ReadLine();
             switch (choice)
             {
-                case "1": brt.BreathAnimation(); break;
-                case "2": Console.WriteLine(2); break;
-                case "3": Console.WriteLine(3); break;
+                case "1": activity = "Breathing"; break;
+                case "2": activity = "Listing"; break;
+                case "3": activity = "Reflection"; break;
                 case "4": run = false; break;
             }
+            act.GetReady(activity);
         }
         Console.Clear();
         Console.Write("Good job. Continue to be mindful");

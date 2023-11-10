@@ -1,8 +1,15 @@
 public class Activity
 {
-    public string GetReady(string activity_choice)
+    public string _activity;
+
+    public Activity (string activity)
     {
-        return "Alright, get ready to start " + activity_choice;
+        _activity = activity;
+    }
+
+    public string GetReady()
+    {
+        return "Alright, get ready to start the " + _activity;
     }
     public int origRow;
     public int origCol;   

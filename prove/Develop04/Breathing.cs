@@ -1,5 +1,10 @@
 public class Breathing : Activity
 {
+    private _time;
+    public Breathing (string activity, int time) : base (activity)
+    {
+        _time = time;
+    }
     public string BreathInstuct(int time) // in minutes
     {
         return "for the next " + time + "minutes lets just focus on breathing";
