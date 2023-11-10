@@ -1,15 +1,31 @@
 using System;
 class Program
 {
-    void clear()
+    
+    static void Main()
     {
+        int counter = 0;
+        bool run = true;
+        string choice;
         Console.Clear();
-    }
-    static void Main(string[] args)
-    {
-        clear();
         Console.WriteLine("Welcome to the Mindfulness Companion App");
-        Console.WriteLine("What would you like to do?");
-        Console.WriteLine("1) Breathe\n2) List\n3) Reflect");
+        while (run != false)
+        {
+            Console.WriteLine("What would you like to do?");
+            Console.WriteLine("1) Breathe\n2) List\n3) Reflect");
+            choice = Console.ReadLine();
+            switch (choice)
+            {
+                case "1": Animation.Breathing(); break;
+                case "2": Console.WriteLine(2); break;
+                case "3": Console.WriteLine(3); break;
+                case "4": run = false; break;
+            }
+            // while (counter < 5)
+            // {
+                
+            //     counter++;
+            // }
+        }
     }
 }
