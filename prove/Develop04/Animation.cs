@@ -42,13 +42,13 @@ public class Aninmation
         origCol = Console.CursorLeft;
 
         // Draw the left side of a 5x5 rectangle, from top to bottom.
-        for (int i = 0; i < 20; i + 4)
+        for (int i = 0; i < 20; i += 4)
         {   
             WriteAt("(^O^)", 0, i);
             Thread.Sleep(wait);
         }
         // Draw the bottom side, from left to right.
-        for (int i = 0; i < 20; i + 4)
+        for (int i = 0; i < 20; i += 4)
         {
             WriteAt("(-o-)", 1, i);
             Thread.Sleep(wait);
