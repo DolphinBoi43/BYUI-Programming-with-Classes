@@ -7,7 +7,7 @@ public class Listing : Activity
     }
     public string ListInstuct() // in minutes
     {
-        return "For the next " + _time + "minutes lets just on the topics I'll provide";
+        return "For the next " + _time + "minutes lets just " + _activity + " on the topics I'll provide";
     }
     private string[] topics = { "Think of how many times you started a conversation?",
                                 "How many animals have you petted?",
@@ -16,7 +16,7 @@ public class Listing : Activity
                                 "What are some of your favorite movies?",
                                 "What are somethings you like in a person?",
                                 "What are some things you would say to your youngerself?"};
-    public void ListAnimation()
+    public void List()
     {
         int wait = 2000;
         // Start of the actual reflecting ativity

@@ -9,7 +9,7 @@ public class Reflection : Activity
     }
     public string ReflectInstuct() // in minutes
     {
-        return "For the next " + _time + "minutes, just think back and reflect";
+        return "For the next " + _time + "minutes, just think back and " + _activity + " on life";
     }
     private string[] topics = { "When did you give a compliment to someone last?",
                                 "When was the last time you appreciated something in nature?",
@@ -18,7 +18,7 @@ public class Reflection : Activity
                                 "",
                                 "",
                                 ""};
-    public void ReflectAnimation()
+    public void Reflect()
     {
         string topic = topics[rnd.Next(0,topics.Length)];
         int wait = 2000;

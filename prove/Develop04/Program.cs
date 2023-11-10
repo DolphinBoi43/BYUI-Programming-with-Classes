@@ -23,10 +23,10 @@ class Program
                 activity = "breathing";
                 Breathing brt = new Breathing(activity, time); break;
                 case "2": 
-                activity = "listing";
+                activity = "list";
                 Listing lst = new Listing(activity, time); break;
                 case "3": 
-                activity = "breathing";
+                activity = "reflect";
                 Reflection rft = new Reflection(activity, time); break;
                 case "4": run = false; break;
             }
