@@ -4,16 +4,19 @@ public class Activity
     {
 
     }
-//     public string CatBlink(int counter)
-//     {
-//         while (true)
-//         {
-//             Console.ClearLine();
-//             Console.Writeline(":)");
-//             Thread.Sleep(counter);
-//             Console.ClearLine();
-//             Console.WriteLine(";)");
-//             Thread.Sleep(counter);
-//         }        
-//     }
+    int origRow;
+    int origCol;   
+    public void WriteAt(string s, int x, int y)
+    { 
+    try
+        {
+        Console.SetCursorPosition(origCol+x, origRow+y);
+        Console.Write(s);
+        }
+    catch (ArgumentOutOfRangeException e)
+        {
+        Console.Clear();
+        Console.WriteLine(e.Message);
+        }
+    }
 }
