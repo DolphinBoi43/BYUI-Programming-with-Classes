@@ -1,6 +1,6 @@
 public class Animation
 {
-    int counter;
+    private int counter;
     public Animation()
     {
         counter = 0;
