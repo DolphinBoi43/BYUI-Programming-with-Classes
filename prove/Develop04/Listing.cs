@@ -9,7 +9,13 @@ public class Listing : Activity
     {
         return "For the next " + _time + "minutes lets just on the topics I'll provide";
     }
-    private string[] topics
+    private string[] topics = { "Think of how many times you started a conversation?",
+                                "How many animals have you petted?",
+                                "What are some of your favorite meals?",
+                                "What are some goals you have or had in the past?",
+                                "What are some of your favorite movies?",
+                                "What are somethings you like in a person?",
+                                "What are some things you would say to your youngerself?"};
     public void ListAnimation()
     {
         int wait = 2000;
