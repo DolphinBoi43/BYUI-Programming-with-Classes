@@ -1,6 +1,6 @@
 public class Breathing : Activity
 {
-    private _time;
+    private int _time;
     public Breathing (string activity, int time) : base (activity)
     {
         _time = time;
@@ -11,25 +11,31 @@ public class Breathing : Activity
     }
     public void Breath()
     {
-        int wait = 1500;
-        // Start of the actual breathing ativity
-        for (int i = 0; i < _time * 20; i++) //Should do the animation for however long the session is
+        int wait = 1000;
+        // Start of the actual reflecting ativity
+        Console.Clear();
+        for (int i = 0; i < _time*3; i++) //Should add a thought bubble every 2 secs for however long the session is
         {
-            Console.Clear();
-            Console.WriteLine("Breath in...");
-            for (int i = 0; i < 3; i++)
-            {   
-                WriteAt("(^O^)", i*6, 1);
-                Thread.Sleep(wait);
-            }
-            Console.Clear();
-            Console.WriteLine("Breath out...");
-            for (int i = 0; i < 3; i++)
+            WriteAt("Breathe In...", 0, 0);
+            WriteAt("(^O^)", 0, 1);
+            Thread.Sleep(wait);
+            for (int j = 0; j < 3; j++) //only do it 3 times
             {
-                WriteAt("(-o-)", i*6, 1);
+                WriteAt(" C", j+5, 1);
                 Thread.Sleep(wait);
             }
+            WriteAt("           ", i, 1);
             Console.Clear();
+            WriteAt("Breathe Out...", 0, 0);
+            WriteAt("(-o-)", 0, 1);
+            Thread.Sleep(wait);
+            for (int j = 0; j < 3; j++) //only do it 3 times
+            {
+                WriteAt(" 3", j+5, 1);
+                Thread.Sleep(wait);
+            }
+            WriteAt("           ", i, 1);
         }
+        Console.Clear();
     }
 }

@@ -20,23 +20,26 @@ public class Reflection : Activity
                                 "What do you think it takes to make you happy?"};
     public void Reflect()
     {
-        string topic = topics[rnd.Next(0,topics.Length)];
-        int wait = 2000;
-        // Start of the actual reflecting ativity
-        Console.Clear();
-        WriteAt("(=_=)", 0, 1);
-        for (int i = 0; i < _time*30; i++) //Should add a thought bubble every 2 secs for however long the session is
+        for (int r = 0; r < _time; r++)
         {
-            WriteAt(topic, 0, 0);
-            Thread.Sleep(wait);
-            for (int i = 0; i < 3; i++) //only do it 3 times
+            string topic = topics[rnd.Next(0,topics.Length)];
+            int wait = 2000;
+            // Start of the actual reflecting ativity
+            Console.Clear();
+            for (int i = 0; i < _time*2; i++) //Should add a thought bubble every 2 secs for however long the session is
             {
-                WriteAt("*", i+5, 1);
+                WriteAt(topic, 0, 0);
+                WriteAt("(=_=)", 0, 1);
                 Thread.Sleep(wait);
+                for (int j = 0; j < 3; j++) //only do it 3 times
+                {
+                    WriteAt("*", j+5, 1);
+                    Thread.Sleep(wait);
+                }
+                WriteAt("           ", i, 1);
             }
-            WriteAt("   ", i+5, 1);
+            Console.Clear();
         }
-        Console.Clear();
     }
 
 }
