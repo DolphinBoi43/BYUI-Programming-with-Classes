@@ -1,11 +1,11 @@
 public class Activity
 {
-    public Activity()
+    public string GetReady(string activity_choice)
     {
-
+        return "Alright, get ready to start " + activity_choice;
     }
-    int origRow;
-    int origCol;   
+    private int origRow;
+    private int origCol;   
     public void WriteAt(string s, int x, int y)
     { 
     try
