@@ -4,7 +4,6 @@ class Program
     
     static void Main()
     {
-        int counter = 0;
         bool run = true;
         string choice;
         Console.Clear();
@@ -16,7 +15,7 @@ class Program
             choice = Console.ReadLine();
             switch (choice)
             {
-                case "1": Animation.Breathing(); break;
+                case "1": Animation.BreathAnimation(); break;
                 case "2": Console.WriteLine(2); break;
                 case "3": Console.WriteLine(3); break;
                 case "4": run = false; break;

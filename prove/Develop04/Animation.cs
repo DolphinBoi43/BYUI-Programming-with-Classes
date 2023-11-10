@@ -33,7 +33,7 @@ public class Aninmation
         Console.WriteLine(e.Message);
         }
     }
-    public void Breathing()
+    public void BreathAnimation()
     {
         int wait = 1000;
         // Clear the screen, then save the top and left coordinates.
