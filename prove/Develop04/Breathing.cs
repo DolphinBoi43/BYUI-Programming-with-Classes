@@ -7,13 +7,13 @@ public class Breathing : Activity
     }
     public string BreathInstuct() // in minutes
     {
-        return "for the next " + _time + "minutes lets just focus on breathing";
+        return "For the next " + _time + "minutes lets just focus on breathing";
     }
     public void BreathAnimation()
     {
         int wait = 1500;
         // Start of the actual breathing ativity
-        for (int i = 0; i < _time * 40; i++)
+        for (int i = 0; i < _time * 20; i++) //Should do the animation for however long the session is
         {
             Console.Clear();
             Console.WriteLine("Breath in...");
