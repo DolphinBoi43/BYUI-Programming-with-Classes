@@ -2,33 +2,20 @@ using System;
 using System.IO;
 class Program
 {
-    
-    static void LongWait()
-    {
-        Thread.Sleep(5000);
-        Console.Clear();
-    }
-    static void Wait()
-    {
-        Thread.Sleep(2000);
-        Console.Clear();
-    }
     static void Intro()
     {
         Console.WriteLine("Welcome to the Scripture Memorizor App v1.0");
-        LongWait();
         Console.WriteLine("Prepare yourself in 3...");
-        Wait();
-        Console.WriteLine("2..");
-        Wait();
-        Console.WriteLine("1..");
-        Wait();
+        Thread.Sleep(2000); Console.Clear();
+        Console.WriteLine("2...");
+        Thread.Sleep(2000); Console.Clear();
+        Console.WriteLine("1...");
     }
     static void Main(string[] args)
     {
         Random rnd = new Random();
         Console.Clear();
-        Intro();
+        // Intro();
         
         // Find a scripture to memorize
         string[] Files= new string[2];
@@ -50,7 +37,6 @@ class Program
 
         // Start of actually memorization
         string run = "";
-        int runs = 0;
         List<string> scripture = new List<string>();
         for (int i = 0; i < verse_count; i++)
         {
@@ -58,35 +44,26 @@ class Program
         }
         while (run != "quit")
         {
-            
+            Console.Clear();
             // Display the scripture and start the memorization process
-            Console.WriteLine($"{rf.GetBook()} {rf.GetChapter()}:{rf.GetVerses()}\n");
+            Console.WriteLine($"{rf.GetBook()} {rf.GetChapter()}\n");
             for (int i = 0; i < verse_count; i++)
             {
-                if (runs == 0)
-                {
-                    Console.WriteLine($"{verse_start + i}. {scripture[i]}");
-                }else{
-                    
-                    Console.WriteLine($"{verse_start + i}. {sc.WordErase(scripture[i])}");
-                }
-                runs += 1;
+                Console.WriteLine($"{verse_start + i}. {scripture[i]}");
             }
-            Thread.Sleep(2000);
+            for (int i = 0; i < verse_count; i++)
+            {
+                scripture[i] = sc.WordErase(scripture[i]);
+            }
             Console.WriteLine("\nPress the [Enter] key to continue or type quit");
             run = Console.ReadLine();
             Console.Clear();
             if (run != "quit")
             {
                 Console.WriteLine("Get Ready!");
-                LongWait();
-            }else{
-                Wait();
             }
         }
         Console.WriteLine("Remeber to continue to seek after good things :)");
-        LongWait();
         Console.WriteLine("Goodbye");
-        LongWait();
     }
 }

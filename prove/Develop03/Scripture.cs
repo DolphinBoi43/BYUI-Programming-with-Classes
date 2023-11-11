@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 class Scripture
 {
     private string[] _verses;
-    private string _verse;
+    // private string _verse;
     public Scripture(string filename)
     {
         _verses = File.ReadAllLines(filename);
@@ -14,15 +14,15 @@ class Scripture
         return _verses[verse_num];
     }
 
-    public string WordErase(string whole_verse)
+    public string WordErase(string wholeVerse)
     {
-        Random rnd = new Random();
-        string[] verse_words = whole_verse.Split(' ');
-        int word_num = rnd.Next(0,verse_words.Length);
-        string word = verse_words[word_num];
-        string replace = Regex.Replace(word, @"(a-Z)","_$1");
-        verse_words[word_num] = replace;
-        _verse = string.Join(" ", verse_words);
-        return _verse;
+            Random rnd = new Random();
+            string[] verseWords = wholeVerse.Split(' ');
+            int wordNum = rnd.Next(0, verseWords.Length);
+            string word = verseWords[wordNum];
+            string replace = Regex.Replace(word, @"[a-zA-Z]", "_");
+            verseWords[wordNum] = replace;
+            string verse = string.Join(" ", verseWords);
+        return verse;
     }
 }
