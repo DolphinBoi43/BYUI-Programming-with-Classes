@@ -1,9 +1,13 @@
 public class SimpleGoal : Goal
 {
-    private string _goal_check; private int _exp_earned;
-    public SimpleGoal(string goal_name, string goal_description, int set_exp, string goal_check) : base (goal_name, goal_description, set_exp)
+    private string _goal_check;
+    public SimpleGoal(string goal_type, string goal_name, string goal_description, string set_exp, string other) : base (goal_type, goal_name, goal_description, set_exp)
     {
-        _goal_check = goal_check;
+        _goal_check = other;
+    }
+    public override string NewGoal()
+    {
+        return _goal_type + ";" + _goal_name + ";" + _goal_description + ";" + _set_exp + ";" + _goal_check;
     }
     public override void UpdateGoal()
     {
@@ -13,7 +17,7 @@ public class SimpleGoal : Goal
     {
         if (_goal_check == "X")
         {
-            _exp_earned = _set_exp;
+            _exp_earned = int.Parse(_set_exp);
         }else{
             _exp_earned = 0;
         }
