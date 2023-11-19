@@ -18,6 +18,7 @@ class Program
             Console.Write("What is your name? : ");
             person_save = Console.ReadLine();
             file_person_save = person_save + ".txt";
+
             // Checks for if the user has been here before, and will create a new file if not found
             if (File.Exists(file_person_save) == true)
             {
@@ -43,13 +44,12 @@ class Program
             }
         }
         Console.Clear();
-        // run = true;
-        // while (run != false)
-        // {
-        //     // Get all info from save file
-        //     string saveFile = File.ReadAllLines(filename);
-        //     string saveList = new List<string>(saveFile);
-        // }
-        // // Save File here
+        run = true;
+        while (run != false)
+        {
+            // Get all info from save file
+            
+        }
+        // Save any changes to save file here
     }
 }
