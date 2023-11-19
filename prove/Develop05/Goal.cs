@@ -8,7 +8,6 @@ public abstract class Goal
         _goal_description = goal_description;
         _set_exp = set_exp;
     }
-
     public abstract void UpdateGoal();
     public abstract int UpdateLevel();
 
