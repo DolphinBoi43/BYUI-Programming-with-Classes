@@ -5,8 +5,20 @@ class Program
 {
     static void Main(string[] args)
     {
-        string person_save, file_person_save;
+        const int Hard = 5000; const int Normal = 2500; const int Easy = 1000;
+        string person_save, file_person_save, Save_info, Difficulty;
+        long Earned_Exp;
         var run = true;
+        bool new_name = false;
+        // First line of file will give us: Difficulty, Earned Exp
+        // Format for goals in file is as follows
+        // Goal_Type;Goal_name;Goal_details;Set_exp;Other(seperated with '+')    
+        List<string> Goal_Type = new List<string>();
+        List<string> Goal_name = new List<string>();
+        List<string> Goal_details = new List<string>();
+        List<int> Set_exp = new List<int>();
+        // Will be split up depending on Goal Type
+        List<string> Other = new List<string>();
 
         // Start of menu boot
         Console.WriteLine("Game Goal Program v0.0.0.0.0.0.0.1");
@@ -31,6 +43,7 @@ class Program
                 if (create == "y")
                 {
                     File.Create(file_person_save);
+                    new_name = true;
                     run = false;
                 }else if(create == "n")
                 {
@@ -42,14 +55,21 @@ class Program
                 Thread.Sleep(2000);
                 Console.Clear();
             }
+            if (new_name == false)
+            {
+                // First line of file will give us: Difficulty;Earned Exp
+                // Get all info from save file
+                Save_info = File.ReadLines(file_person_save).First();
+                string[] info = Save_info.Split(';');
+                Difficulty = info[0]; Earned_Exp = int.Parse(info[1]);
+
+
+
+            }else{
+                // Starts builing a new save file
+
+            }
         }
-        Console.Clear();
-        run = true;
-        while (run != false)
-        {
-            // Get all info from save file
-            
-        }
-        // Save any changes to save file here
+        // Saves the changes after exiting
     }
 }
