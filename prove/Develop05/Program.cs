@@ -1,11 +1,12 @@
 using System;
 using System.IO;
+using System.Linq;
 
 class Program
 {
     static void Main(string[] args)
     {
-        const int Hard = 500;const int Normal = 250; const int Easy = 100;
+        const int Hard = 500; const int Normal = 250; const int Easy = 100;
         string person_save, file_person_save, Goal_Type, choice;
         string Difficulty = null;
         int Earned_Exp = 0; int Level_Mode = 0;
@@ -124,6 +125,7 @@ class Program
                         Console.Clear();
                         break;
                     case "2":
+                        Goal_List.Sort();
                         foreach (string goal in Goal_List)
                         {
                             Menu.DisplayGoals(goal);
@@ -133,21 +135,38 @@ class Program
                         Console.Clear();
                         break;
                     case "3":
+                        Console.Clear();
+                        Console.WriteLine("Saving...");
+                        Goal_List.Sort();
                         File.WriteAllText(file_person_save,string.Empty);
                         using (StreamWriter save_File = new StreamWriter(file_person_save))
                         {
-                            save_File.WriteLine(Difficulty + ";" + Level_Mode);
+                            save_File.WriteLine(Difficulty + ";" + Earned_Exp);
                             foreach (string goal in Goal_List)
                             {
                                 save_File.WriteLine(goal);
                             }
                         }
+                        Thread.Sleep(1000);
+                        Console.WriteLine("Saved!");
+                        Thread.Sleep(1000);
+                        Console.Clear();
                         break;
                     case "4":
+                        Console.Write("Name of Goal you want to update: ");
+                        string update_goal = Console.ReadLine();
+                        Menu.UpdateGoal(Goal_List, update_goal);
                         break;
                     case "5":
-                        break;
-                    case "6":
+                        File.WriteAllText(file_person_save,string.Empty);
+                        using (StreamWriter save_File = new StreamWriter(file_person_save))
+                        {
+                            save_File.WriteLine(Difficulty + ";" + Earned_Exp);
+                            foreach (string goal in Goal_List)
+                            {
+                                save_File.WriteLine(goal);
+                            }
+                        }
                         run_goals = false;
                         run_main = false;
                         break;

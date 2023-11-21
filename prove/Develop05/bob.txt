@@ -1,0 +1,4 @@
+normal;0
+progress;he;hehe;50;7+50
+progress;hee;heehee;50;3+50
+simple;try;hard;50; 

@@ -10,8 +10,8 @@ public class Menu
         } else {
             Next_Level_Exp = Level_Mode - Earned_Exp;
         }
-        Console.WriteLine($"Personal Stats: Level {Earned_Exp / Level_Mode}\nTo Next Level {Next_Level_Exp} EXP\n");
-        Console.WriteLine("Main Menu:\n1. Create New Goal\n2. List Goals\n3. Save Goals\n4. Record Event\n6. Quit");
+        Console.WriteLine($"Personal Stats: Level {Earned_Exp / Level_Mode + 1}\nTo Next Level {Next_Level_Exp} EXP\n");
+        Console.Write("Main Menu:\n1. Create New Goal\n2. List Goals\n3. Save Progress\n4. Record New Event\n5. Quit\n[Enter #]: ");
     }
     public static void StartMenu()
     {
@@ -102,6 +102,30 @@ public class Menu
             Console.WriteLine($"[{goal_array[4]}] : {goal_array[1]} - {goal_array[2]} ({goal_array[3]} EXP)");
         }
     
+    }
+    // Sub-Menu for Updating Goals
+    public static void UpdateGoal(List<string> Goal_List, string update_goal)
+    {
+        int i = 0;
+        while ( i < Goal_List.Count)
+        {
+            string new_updated_goal = null;
+            string[] goal_array = Goal_List[i].Split(";");
+            if (goal_array[1].ToLower() == update_goal.ToLower())
+            {                
+                switch(goal_array[0])
+                {
+                    case "progress": new_updated_goal = ProgressGoal.UpdateGoal(Goal_List[i]); break;
+                    case "checkpoint": new_updated_goal = CheckPointGoal.UpdateGoal(Goal_List[i]); break;
+                    case "simple": new_updated_goal = SimpleGoal.UpdateGoal(Goal_List[i]); break;
+                    case "eternal": new_updated_goal = EternalGoal.UpdateGoal(Goal_List[i]); break;
+                    default: Console.WriteLine("AHHHHH"); break;
+                }
+                Goal_List.Remove(Goal_List[i]); Goal_List.Add(new_updated_goal);
+                break;
+            }
+            i++;
+        }
     }
     
 }

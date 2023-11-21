@@ -9,13 +9,15 @@ public class EternalGoal : Goal
     {
         return _goal_type + ";" + _goal_name + ";" + _goal_description + ";" + _set_exp + ";" + _goal_count;
     }
-    public override void UpdateGoal(string goal_name)
+    public static string UpdateGoal(string Goal)
     {
-        
-    }
-    public override int UpdateLevel()
-    {
-        _exp_earned = int.Parse(_goal_count) * int.Parse(_set_exp);
-        return _exp_earned; 
+        char[] seps = {';','+'};
+        string[] goal_arr = Goal.Split(seps);
+        Console.Write("How much progress did you make?: ");
+        string add_num = Console.ReadLine();
+        int new_num = int.Parse(goal_arr[4]) + int.Parse(add_num);
+        goal_arr[4] = new_num.ToString();
+        string updated_goal = goal_arr[0] + ";" + goal_arr[1] + ";" + goal_arr[2] + ";" + goal_arr[3] + ";" + goal_arr[4];
+        return updated_goal; 
     }
 }
