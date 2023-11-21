@@ -19,8 +19,15 @@ public class ProgressGoal : Goal
         string[] goal_arr = Goal.Split(seps);
         Console.Write("How much progress did you make?: ");
         string add_num = Console.ReadLine();
-        int new_num = int.Parse(goal_arr[4]) + int.Parse(add_num);
-        goal_arr[4] = new_num.ToString();
+        int current_p = int.Parse(goal_arr[4]); int goal = int.Parse(goal_arr[5]); int add_p = int.Parse(add_num);
+        current_p =  current_p + add_p;
+        if (current_p < goal)
+        {
+            Console.WriteLine("Keep Going!");
+        } else {
+            Console.WriteLine($"Congrats! You reached your goal!\n\n{goal_arr[3]} EXP earned");
+        }
+        goal_arr[4] = current_p.ToString();
         string updated_goal = goal_arr[0] + ";" + goal_arr[1] + ";" + goal_arr[2] + ";" + goal_arr[3] + ";" + goal_arr[4] + "+" + goal_arr[5];
         return updated_goal; 
     }

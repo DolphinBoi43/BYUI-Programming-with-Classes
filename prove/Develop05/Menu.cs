@@ -104,7 +104,7 @@ public class Menu
     
     }
     // Sub-Menu for Updating Goals
-    public static void UpdateGoal(List<string> Goal_List, string update_goal)
+    public static int UpdateGoal(List<string> Goal_List, string update_goal, int Earned_Exp)
     {
         int i = 0;
         while ( i < Goal_List.Count)
@@ -116,7 +116,7 @@ public class Menu
                 switch(goal_array[0])
                 {
                     case "progress": new_updated_goal = ProgressGoal.UpdateGoal(Goal_List[i]); break;
-                    case "checkpoint": new_updated_goal = CheckPointGoal.UpdateGoal(Goal_List[i]); break;
+                    case "checkpoint": (new_updated_goal, Earned_Exp) = CheckPointGoal.UpdateGoal(Goal_List[i], Earned_Exp); break;
                     case "simple": new_updated_goal = SimpleGoal.UpdateGoal(Goal_List[i]); break;
                     case "eternal": new_updated_goal = EternalGoal.UpdateGoal(Goal_List[i]); break;
                     default: Console.WriteLine("AHHHHH"); break;
@@ -126,6 +126,7 @@ public class Menu
             }
             i++;
         }
+        return Earned_Exp;
     }
     
 }

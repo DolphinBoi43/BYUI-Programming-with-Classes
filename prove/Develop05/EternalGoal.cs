@@ -13,10 +13,20 @@ public class EternalGoal : Goal
     {
         char[] seps = {';','+'};
         string[] goal_arr = Goal.Split(seps);
-        Console.Write("How much progress did you make?: ");
-        string add_num = Console.ReadLine();
-        int new_num = int.Parse(goal_arr[4]) + int.Parse(add_num);
-        goal_arr[4] = new_num.ToString();
+        Console.Write("Did you do this goal?\n[y/n]: ");
+        string goal_check = Console.ReadLine();
+        int base_exp = int.Parse(goal_arr[3]); int earned_exp = 0;
+        if (goal_check.ToLower() == "y")
+        {
+            int current_p = int.Parse(goal_arr[4]);
+            current_p = current_p + 1;
+            earned_exp = base_exp * current_p;
+            goal_arr[4] = (current_p).ToString();
+            Console.WriteLine($"Well Done!\n{base_exp} EXP earned");
+        } else {
+            goal_arr[4] = " ";
+            Console.WriteLine("I believe in you");
+        }
         string updated_goal = goal_arr[0] + ";" + goal_arr[1] + ";" + goal_arr[2] + ";" + goal_arr[3] + ";" + goal_arr[4];
         return updated_goal; 
     }

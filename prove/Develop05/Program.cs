@@ -50,11 +50,13 @@ class Program
                 Console.Clear();
             }
             Console.Clear();
+            // Program either loads a old save file or creates a new one
             if (new_save == false)
             {
-                // Loads data from previous save file
+                // Loads data from previous save file in directory
                 StreamReader load_file = new StreamReader(file_person_save);
                 string stats = load_file.ReadLine();
+                // Gets the person difficulty and earned exp
                 string[] stats_Arr = stats.Split(";");
                 Difficulty = stats_Arr[0]; Earned_Exp = int.Parse(stats_Arr[1]);
                 switch (Difficulty)
@@ -64,6 +66,7 @@ class Program
                     case "easy": Level_Mode = Easy; break;
                     default: Console.WriteLine("Error Corrupted save"); Environment.Exit(0); break;
                 }
+                // Gets goals from txt and adds to List for modifying
                 string goals;
                 while ((goals = load_file.ReadLine()) != null)
                 {
@@ -83,6 +86,7 @@ class Program
                     case "easy": Level_Mode = Easy; Console.WriteLine($"Setting Difficulty to [{Difficulty.ToUpper()}]"); break;
                     default: Level_Mode = Easy; Console.WriteLine("Error: Setting Difficulty to [EASY]"); break;
                 }
+                // Writes personal stats to new save file
                 using (StreamWriter save_File = new StreamWriter(file_person_save, true))
                 {
                     save_File.WriteLine(Difficulty + ";0");
@@ -90,12 +94,13 @@ class Program
             }
             while (run_goals != false)
             {
-                // Program either loads a old save file or creates a new one
+                // Start of the goal setting and modifying menu
                 Menu.GoalMenu(Earned_Exp, Level_Mode);
                 choice = Console.ReadLine();
                 Console.Clear();
                 switch (choice)
                 {
+                    // Makes new goals
                     case "1":
                         Goal_Type = Menu.NewGoalText();
                         switch(Goal_Type)
@@ -125,6 +130,7 @@ class Program
                         Console.Clear();
                         break;
                     case "2":
+                        // Displays Goals by type
                         Goal_List.Sort();
                         foreach (string goal in Goal_List)
                         {
@@ -135,7 +141,7 @@ class Program
                         Console.Clear();
                         break;
                     case "3":
-                        Console.Clear();
+                        // Saves current data to goal list
                         Console.WriteLine("Saving...");
                         Goal_List.Sort();
                         File.WriteAllText(file_person_save,string.Empty);
@@ -153,11 +159,13 @@ class Program
                         Console.Clear();
                         break;
                     case "4":
+                        // Updates goal based off name given
                         Console.Write("Name of Goal you want to update: ");
                         string update_goal = Console.ReadLine();
-                        Menu.UpdateGoal(Goal_List, update_goal);
+                        Earned_Exp = Menu.UpdateGoal(Goal_List, update_goal, Earned_Exp);
                         break;
                     case "5":
+                        // Saves file and then exits loops
                         File.WriteAllText(file_person_save,string.Empty);
                         using (StreamWriter save_File = new StreamWriter(file_person_save))
                         {
@@ -171,12 +179,12 @@ class Program
                         run_main = false;
                         break;
                     default:
+                        // Whoopsies
                         Console.WriteLine("Error: Invalid Selection");
                         break;
 
                 }
             }
         }
-        // Saves the changes after exiting
     }
 }
