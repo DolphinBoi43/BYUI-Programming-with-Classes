@@ -9,7 +9,7 @@ public class SimpleGoal : Goal
     {
         return _goal_type + ";" + _goal_name + ";" + _goal_description + ";" + _set_exp + ";" + _goal_check;
     }
-    public static string UpdateGoal(string Goal)
+    public static (string, int) UpdateGoal(string Goal, int Current_Exp)
     {
         char[] seps = {';','+'};
         string[] goal_arr = Goal.Split(seps);
@@ -25,6 +25,7 @@ public class SimpleGoal : Goal
             Console.WriteLine("I believe in you");
         }
         string updated_goal = goal_arr[0] + ";" + goal_arr[1] + ";" + goal_arr[2] + ";" + goal_arr[3] + ";" + goal_arr[4];
-        return updated_goal; 
+        Current_Exp = Current_Exp + base_exp;
+        return (updated_goal, Current_Exp); 
     }
 }

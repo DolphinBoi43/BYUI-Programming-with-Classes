@@ -115,10 +115,10 @@ public class Menu
             {                
                 switch(goal_array[0])
                 {
-                    case "progress": new_updated_goal = ProgressGoal.UpdateGoal(Goal_List[i]); break;
+                    case "progress": (new_updated_goal, Earned_Exp) = ProgressGoal.UpdateGoal(Goal_List[i], Earned_Exp); break;
                     case "checkpoint": (new_updated_goal, Earned_Exp) = CheckPointGoal.UpdateGoal(Goal_List[i], Earned_Exp); break;
-                    case "simple": new_updated_goal = SimpleGoal.UpdateGoal(Goal_List[i]); break;
-                    case "eternal": new_updated_goal = EternalGoal.UpdateGoal(Goal_List[i]); break;
+                    case "simple": (new_updated_goal, Earned_Exp) = SimpleGoal.UpdateGoal(Goal_List[i], Earned_Exp); break;
+                    case "eternal": (new_updated_goal, Earned_Exp) = EternalGoal.UpdateGoal(Goal_List[i], Earned_Exp); break;
                     default: Console.WriteLine("AHHHHH"); break;
                 }
                 Goal_List.Remove(Goal_List[i]); Goal_List.Add(new_updated_goal);
