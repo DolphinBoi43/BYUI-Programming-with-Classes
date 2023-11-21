@@ -11,7 +11,7 @@ public class Menu
             Next_Level_Exp = Level_Mode - Earned_Exp;
         }
         Console.WriteLine($"Personal Stats: Level {Earned_Exp / Level_Mode}\nTo Next Level {Next_Level_Exp} EXP\n");
-        Console.WriteLine("Main Menu:\n1. Create New Goal\n2. List Goals\n3. Save Goals\n4. Record Event\n6.Quit");
+        Console.WriteLine("Main Menu:\n1. Create New Goal\n2. List Goals\n3. Save Goals\n4. Record Event\n6. Quit");
     }
     public static void StartMenu()
     {
@@ -24,10 +24,12 @@ public class Menu
         Console.WriteLine("[Checkpoint]: Complete a task a certain amount of times to earn EXP (Ex. Study for 30 mins 5 times: 10 EXP)");
         Console.WriteLine("[Eternal]: Everytime task is complete, earn EXP (Ex. Every 1 compliment given = 5 EXP)");
         Console.WriteLine("[Simple]: Completing Goal earns EXP (Ex. Send Resume to Company = 100 EXP) ");
-        Console.Write("Enter here: ");
+        Console.Write("Type choice here: ");
         string goal_type = Console.ReadLine();
         return goal_type.ToLower();
     }
+
+    // Following functions return mulitple strings for the NewGoal() overrides in the other classes
     // Goal Type, Goal Name, Goal Description, Set EXP, Other(Progress+Goal)
     public static (string, string, string, string, string) NewProgressGoal()
     {
@@ -44,16 +46,62 @@ public class Menu
         
         return (goal_type, goal_name, goal_description, set_exp, progress + "+" + goal);
     }
-    // public static string ChecklistGoalText()
-    // {
+    public static (string, string, string, string, string) NewCheckPointGoal()
+    {
+        string goal_type = "checkpoint";
+        string count = "0";
+        Console.Write("Name of Goal: ");
+        string goal_name = Console.ReadLine();
+        Console.Write("Describe your Goal: ");
+        string goal_description = Console.ReadLine();
+        Console.Write("Bonus happens every __ time: ");
+        string bonus_count = Console.ReadLine();
+        Console.Write("Earned EXP after completing [bonus is 3x this]: ");
+        string set_exp = Console.ReadLine();
+        
+        return (goal_type, goal_name, goal_description, set_exp, count + "+" + bonus_count);
 
-    // }
-    // public static string SimpleGoalText()
-    // {
-
-    // }
-    // public static string EternalGoalText()
-    // {
-
-    // }
+    }
+    public static (string, string, string, string, string) NewSimpleGoal()
+    {
+        string goal_type = "simple";
+        string goal_check = " ";
+        Console.Write("Name of Goal: ");
+        string goal_name = Console.ReadLine();
+        Console.Write("Describe your Goal: ");
+        string goal_description = Console.ReadLine();
+        Console.Write("Earned EXP after completing: ");
+        string set_exp = Console.ReadLine();
+        
+        return (goal_type, goal_name, goal_description, set_exp, goal_check);
+    }
+    public static (string, string, string, string, string) NewEternalGoal()
+    {
+        string goal_type = "eternal";
+        string goal_count = "0";
+        Console.Write("Name of Goal: ");
+        string goal_name = Console.ReadLine();
+        Console.Write("Describe your Goal: ");
+        string goal_description = Console.ReadLine();
+        Console.Write("Earned EXP each time: ");
+        string set_exp = Console.ReadLine();
+        
+        return (goal_type, goal_name, goal_description, set_exp, goal_count);
+    }
+    // The following is the format of the goals in the txt file
+    // DisplayGoals will take in strings and output formatted strings for the console
+    // type;name;desciption;set_exp;other(sepereate with +)
+    public static void DisplayGoals(string goal)
+    {
+        char[] seps = {';','+'};
+        string[] goal_array = goal.Split(seps);
+        if (goal_array.Length > 5)
+        {
+            Console.WriteLine($"[{goal_array[4]}/{goal_array[5]}] : {goal_array[1]} - {goal_array[2]} ({goal_array[3]} EXP)");
+        } else {
+            Console.WriteLine($"[{goal_array[4]}] : {goal_array[1]} - {goal_array[2]} ({goal_array[3]} EXP)");
+        }
+    
+    }
+    
 }

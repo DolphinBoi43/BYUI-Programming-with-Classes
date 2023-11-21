@@ -9,7 +9,7 @@ public class EternalGoal : Goal
     {
         return _goal_type + ";" + _goal_name + ";" + _goal_description + ";" + _set_exp + ";" + _goal_count;
     }
-    public override void UpdateGoal()
+    public override void UpdateGoal(string goal_name)
     {
         
     }

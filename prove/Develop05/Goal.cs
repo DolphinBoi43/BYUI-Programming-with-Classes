@@ -10,7 +10,7 @@ public abstract class Goal
         _set_exp = set_exp;
     }
     public abstract string NewGoal();
-    public abstract void UpdateGoal();
+    public abstract void UpdateGoal(string goal_name);
     public abstract int UpdateLevel();
 
 }
