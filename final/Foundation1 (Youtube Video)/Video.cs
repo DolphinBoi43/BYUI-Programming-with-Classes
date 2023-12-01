@@ -1,7 +1,7 @@
 public class Video
 {
-    public List<Comment> _comments = new List<Comment>();
-    public string _title, _author; public float _length; public int _comment_num;
+    private List<Comment> _comments = new List<Comment>();
+    private string _title, _author; private float _length; private int _comment_num;
     public Video (title, author, length, comment_num)
     {
         _title = title;

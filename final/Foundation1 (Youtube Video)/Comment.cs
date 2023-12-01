@@ -1,6 +1,6 @@
 public class Comment
 {
-    public string _user, _ucomment;
+    private string _user, _ucomment;
     public Comment (user, ucomment)
     {
         _user = user;
