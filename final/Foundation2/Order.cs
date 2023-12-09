@@ -25,7 +25,7 @@ public class Order
 
     public string PackingLabel()
     {
-        string label = $"Packing Label for {_customer.Name()}:\n";
+        string label = $"Order Details:\n";
         foreach (var product in _products)
         {
             label += $"{product.Name()} - {product.ID()}\n";
@@ -36,5 +36,10 @@ public class Order
     public string ShippingLabel()
     {
         return $"Ship To:\n{_customer.Name()}\n{_customer.Address()}";
+    }
+
+    public void AddProduct(Product product)
+    {
+        _products.Add(product);
     }
 }
