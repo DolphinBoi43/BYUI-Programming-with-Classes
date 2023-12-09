@@ -15,7 +15,7 @@ public class Swimming : Activity
     }
     public override double Pace()
     {
-        return Length() / Distance();
+        return 60 / Speed();
     }
 
     public override string ActivityType()

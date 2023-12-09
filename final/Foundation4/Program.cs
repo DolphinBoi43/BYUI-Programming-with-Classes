@@ -20,10 +20,17 @@ class Program
         Running run = new Running("12/8/2023", 60.0, 6.0);
         Swimming swim = new Swimming("12/9/2023", 130.0, 12.0);
         activities.Add(cycle); activities.Add(run); activities.Add(swim);
+        
+        Console.WriteLine("In Metric\n");
         foreach (var activity in activities)
         {
             Console.WriteLine($"{activity.GetSummaryKm()}\n");
         }
 
+        Console.WriteLine("In American\n");
+        foreach (var activity in activities)
+        {
+            Console.WriteLine($"{activity.GetSummaryMi()}\n");
+        }
     }
 }

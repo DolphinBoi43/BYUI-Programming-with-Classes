@@ -15,7 +15,7 @@ public class Cycling : Activity
     }
     public override double Pace()
     {
-        return Length() / Distance();
+        return 60 / _speed;
     }
 
     public override string ActivityType()
