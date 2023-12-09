@@ -7,7 +7,7 @@ public class Outdoor : Event
     }
     public string Full()
     {
-        string standard = Event.Standard();
+        string standard = Standard();
         return $"Event Type: Outdoor\nForecast: {_weather}\n{standard}";
     }
     public string Short()

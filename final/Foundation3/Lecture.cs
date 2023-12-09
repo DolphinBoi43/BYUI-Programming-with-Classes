@@ -9,7 +9,7 @@ public class Lecture : Event
 
     public string Full()
     {
-        string standard = Event.Standard();
+        string standard = Standard();
         return $"Event Type: Lecture\nSpeaker: {_speaker}\nCapacity: {_capacity}\n{standard}";
     }
     public string Short()

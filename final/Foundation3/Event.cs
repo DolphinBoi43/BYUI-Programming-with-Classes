@@ -1,6 +1,6 @@
 public class Event
 {
-    private string _title, _details, _date, _time, _address;
+    public string _title, _details, _date, _time, _address;
     public Event (string title, string details, string date, string time, string address)
     {
         _title = title;
