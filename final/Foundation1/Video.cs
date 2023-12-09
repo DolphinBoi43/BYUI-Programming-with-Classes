@@ -1,18 +1,20 @@
 public class Video
 {
-    private List<Comment> _comments = new List<Comment>();
-    private string _title, _author; private float _length; private int _comment_num;
-    public Video (title, author, length, comment_num)
+    public List<Comment> _comments = new List<Comment>();
+    private string _title, _author; private int _length; private int _comment_num;
+    public Video (string title, string author, int length)
     {
         _title = title;
         _author = author;
         _length = length;
-        _comment_num = comment_num;
     }
 // title / author / length / number of comments
     public void DisplayVideo()
     {
-        Console.WriteLine($"{_title} by {_author}\n{_length:.2f} mins || {_comment_num} Comments");
+        TimeSpan time = TimeSpan.FromSeconds(_length);
+        _comment_num = _comments.Count;
+        Console.WriteLine($"'{_title}' by {_author}\nLength {time.Minutes}:{time.Seconds} || {_comment_num} Comments");
+        Console.WriteLine();
         DisplayComments();
     }
     public void DisplayComments()
